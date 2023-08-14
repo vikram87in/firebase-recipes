@@ -20,6 +20,14 @@ export default function LoginForm({ user }) {
     }
   };
 
+  const handleLoginWithGoogle = () => {
+    try {
+      FirebaseAuthService.loginWithGoogle();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const handleSendResetPasswordEmail = async () => {
     if (!username) {
       alert('missing username');
@@ -62,7 +70,8 @@ export default function LoginForm({ user }) {
     </label>
     <div className='button-box'>
       <button className='primary-button'>Login</button>
-      <button type='button' onClick={handleSendResetPasswordEmail}>Reset Password</button>
+      <button type='button' className='primary-button' onClick={handleSendResetPasswordEmail}>Reset Password</button>
+      <button type='button' className='primary-button' onClick={handleLoginWithGoogle}>Login with Google</button>
     </div>
 
   </form>;
